@@ -1,84 +1,106 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Presentes de Aniversário</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presenteie os Aniversariantes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
-      background-color: #1c1c1c;
-      color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      background-color: #1e1e1e;
+      color: #ffffff;
       font-family: 'Montserrat', sans-serif;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       flex-direction: column;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .container {
+      min-height: 100vh;
       text-align: center;
-      background-color: #2b2b2b;
-      padding: 30px 40px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+      padding: 2rem;
     }
 
     h1 {
-      font-size: 22px;
-      margin-bottom: 20px;
-      font-weight: 600;
-      letter-spacing: 1px;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .intro-text {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      line-height: 1.5;
+    }
+
+    .button-container {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 1.5rem;
     }
 
     .button {
-      background-color: #3a3a3a;
-      color: #fff;
-      border: 1px solid #666;
-      padding: 12px 20px;
-      margin: 6px;
-      border-radius: 6px;
+      background-color: #cccccc;
+      border: none;
+      color: black;
+      padding: 1rem 1.8rem;
+      font-size: 1.1rem;
+      border-radius: 30px;
       cursor: pointer;
-      font-size: 16px;
-      transition: 0.3s ease;
+      transition: background-color 0.3s ease;
+      min-width: 220px;
     }
 
     .button:hover {
-      background-color: #555;
+      background-color: #e0e0e0;
     }
 
     .info-text {
-      margin-top: 15px;
-      font-size: 14px;
-      color: #ccc;
+      font-size: 0.95rem;
+      color: #cccccc;
     }
 
-    .copied-message {
-      margin-top: 10px;
-      font-size: 13px;
-      color: #9f9;
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .intro-text {
+        font-size: 1rem;
+      }
+
+      .button {
+        font-size: 1rem;
+        padding: 0.8rem 1.4rem;
+        min-width: 100%;
+      }
+
+      .info-text {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>PRESENTEIE OS ANIVERSARIANTES</h1>
+  <h1>PRESENTEIE OS ANIVERSARIANTES</h1>
+  <div class="info-text">
+    Nos surpreenda com sua lembrança mas se precisar, têm as chaves PIX abaixo:
+  </div>
+<p></p>
+  <div class="button-container">
     <button class="button" onclick="copyPix('55997242173')">Chave PIX da Manuela</button>
     <button class="button" onclick="copyPix('02486055002')">Chave PIX do Leonardo</button>
-    <div class="info-text">Clique no botão para copiar a chave!</div>
-    <div id="message" class="copied-message"></div>
   </div>
+  <div class="info-text">Clique no botão para copiar a chave!</div>
 
   <script>
-    function copyPix(chave) {
-      navigator.clipboard.writeText(chave).then(() => {
-        document.getElementById('message').textContent = `Chave copiada: ${chave}`;
-        setTimeout(() => {
-          document.getElementById('message').textContent = '';
-        }, 3000);
-      }).catch(err => {
-        document.getElementById('message').textContent = 'Erro ao copiar a chave.';
+    function copyPix(pixKey) {
+      navigator.clipboard.writeText(pixKey).then(() => {
+        alert('Chave PIX copiada com sucesso!');
+      }, () => {
+        alert('Erro ao copiar a chave PIX.');
       });
     }
   </script>
